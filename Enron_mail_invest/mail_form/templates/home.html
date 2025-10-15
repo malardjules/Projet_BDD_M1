@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Investigation des boites mails - Affaire Enron</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1 class "home-title"> Investigation des boites mails - Affaire Enron</h1>
+    <div class="forms">
+        <h1>Selèctionnez un formulaire</h1>
+        <ul class="form-list">
+            <li class="form-item">
+                <a href="{% url 'query1' %}" class="form-link">
+                    <h2>Formulaire d'analyse de profil employé</h2>
+                    <p>Consultez les attributs d’un employé (identité, catégorie, e-mails) déterminé par son nom ou par l’une de ses adresses e-mail</p>
+                </a>
+            </li>
+            <li class="form-item">
+                <a href="{% url 'query2' %}" class="form-link">
+                    <h2>Formulaire d'analyse des flux de messagerie</h2>
+                    <p>Consultez les employés ayant envoyé et/ou reçu plus que (resp. moins que) x mails dans un intervalle de temps choisi, avec possibilité de faire la différence entre échanges internes et/ou internes-externes</p>
+                </a>
+            </li>
+            <li class="form-item">
+                <a href="{% url 'query3' %}" class="form-link">
+                    <h2>Formulaire d'analyse des communication Inter-employés</h2>
+                    <p>Consultez la liste des employés ayant communiqué avec un employé donné sur un intervalle de temps donné</p>
+                </a>
+            </li>
+            <li class="form-item">
+                <a href="{% url 'query4' %}" class="form-link">
+                    <h2>Formulaire d'analyse des Échanges Inter-employés par Paires</h2>
+                    <p>Consultez les couples d’employés ayant communiqué dans un intervalle de temps choisi (liste ordonnée suivant le nombre de mails échangés, tronquée au-dessous d’un seuil paramétrable)</p>
+                </a>
+            </li>
+            <li class="form-item">
+                <a href="{% url 'query5' %}" class="form-link">
+                    <h2>Formulaire d'analyse des Pic d'Échanges de Mails par Jour</h2>
+                    <p>Consultez les jours dans une période donnée ayant connu le plus grand nombre d’échanges de mails (en différenciant les échanges internes des échanges interne-externe)</p>
+                </a>
+            </li>
+            <li class="form-item">
+                <a href="{% url 'query6' %}" class="form-link">
+                    <h2>Formulaire d'analyse des Mails par Mots-clés</h2>
+                    <p>Consultez les mails contenant une liste de mots déterminés, avec diverses présentations (par expéditeur, par destinataire, etc.) et possibilité de visualiser le contenu d’un mail donné</p>
+                </a>
+            </li>
+            <li class="form-item">
+                <a href="{% url 'query7' %}" class="form-link">
+                    <h2>Formulaire d'analyse des Conversations</h2>
+                    <p>Consultez les contenu d’une conversation: afficher les mails la composant, avec possibilité d’obtenir le contenu d’un mail donné</p>
+                </a>
+            </li>
+            <li class="form-item">
+                <a href="{% url 'requete' %}" class="form-link">
+                    <h2>Requête SQL Libre</h2>
+                </a>
+            </li>
+           
+        </ul>
+    </div>
+    <div class="git">
+         <p><a href="https://github.com/Amugith/Projet_BDD_M1" target="_blank">GitHub du projet</a></p> 
+    </div>
+</body>
+</html>

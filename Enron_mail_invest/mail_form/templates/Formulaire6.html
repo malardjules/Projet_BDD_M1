@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d'Échange</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+    #Form6 button[type="submit"] {
+        margin-top: 10px; /* Ajoute de la marge en haut du bouton */
+    }
+    </style>
+</head>
+
+<body>
+    <div class="forms">
+        <h1>Formulaire d'Échange</h1>
+            <form method="post" id="Form6">
+                {% csrf_token %}
+                <label for="sortType">Trié par :</label>
+                <select id="sortType" name="sortType">
+                    <option value="sender">Expéditeur</option>
+                    <option value="subject">Sujet</option>
+                    <option value="date">Date</option>
+                </select>
+            
+                <label for="keywords">Mots-clés (séparés par des virgules) :</label>
+                <textarea id="keywords" name="keywords" rows="4" cols="50"></textarea>
+            
+                <button type="submit">Valider</button>
+            </form>
+    </div>
+
+    <div class="git">
+        <p><a href="https://github.com/Amugith/Projet_BDD_M1" target="_blank">GitHub du projet</a></p> 
+    </div>
+    <div class="top-left-buttons">
+        <a class="back-previous-button" href="javascript:history.go(-1)">Retour</a>
+        <a class="back-home-button" href="{% url 'home' %}">Accueil</a>
+    </div>
+</body>
+</html>

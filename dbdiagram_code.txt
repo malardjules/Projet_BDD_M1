@@ -1,0 +1,75 @@
+Table mail_form_employee {
+  id INT [pk]
+  category VARCHAR(50) [null]
+  lastname VARCHAR(50) [not null]
+  firstname VARCHAR(50) [not null]
+}
+
+Table mail_form_mailbox {
+  address VARCHAR(100) [pk]
+  employee_id INT [null]
+  is_internal BOOLEAN [null]
+ 
+}
+
+Table mail_form_conversation {
+  subject VARCHAR(200) [pk]
+}
+
+Table mail_form_mail {
+  message_id VARCHAR(100) [pk]
+  sender_id VARCHAR(100)
+  date DATETIME [null]
+  subject VARCHAR(200) [null]
+  conversation_id VARCHAR(200) [null]
+  content TEXT [null]
+  file VARCHAR(500) [not null]
+
+}
+
+Table mail_form_mail_to {
+  mail_id VARCHAR(100)
+  mailbox_id VARCHAR(100)
+
+}
+
+Table mail_form_mail_cc {
+  mail_id VARCHAR(100)
+  mailbox_id VARCHAR(100)
+  
+}
+
+Table mail_form_mail_bcc {
+  mail_id VARCHAR(100)
+  mailbox_id VARCHAR(100)
+ 
+}
+
+Table mail_form_mail_word {
+  mail_id VARCHAR(100)
+  word_id VARCHAR(1000)
+
+}
+
+Table mail_form_word {
+  word VARCHAR(1000) [pk]
+}
+
+Table mail_form_conversation_participants {
+  conversation_id VARCHAR(200)
+  mailbox_id VARCHAR(100)
+}
+Ref: mail_form_conversation.subject > mail_form_conversation_participants.conversation_id
+Ref: mail_form_conversation_participants.mailbox_id > mail_form_mailbox.address
+Ref: mail_form_mailbox.employee_id > mail_form_employee.id
+Ref: mail_form_mail.sender_id > mail_form_mailbox.address
+Ref: mail_form_mail.conversation_id > mail_form_conversation.subject
+Ref: mail_form_mail_to.mail_id > mail_form_mail.message_id
+Ref: mail_form_mail_to.mailbox_id > mail_form_mailbox.address
+Ref: mail_form_mail_cc.mail_id > mail_form_mail.message_id
+Ref: mail_form_mail_cc.mailbox_id > mail_form_mailbox.address
+Ref: mail_form_mail_bcc.mail_id > mail_form_mail.message_id
+Ref: mail_form_mail_bcc.mailbox_id > mail_form_mailbox.address
+Ref: mail_form_mail_word.mail_id > mail_form_mail.message_id
+Ref: mail_form_mail_word.word_id > mail_form_word.word
+

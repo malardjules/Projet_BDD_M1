@@ -1,0 +1,78 @@
+<!-- template/resultat_requete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Requête SQL</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <div class="forms">
+        <h1>Requête SQL</h1>
+        <form method="post" id="requeteForm">
+            {% csrf_token %}
+            <label for="requete">Entrez votre requête SQL :</label><br>
+            <textarea id="requete" name="requete" rows="5" cols="50"></textarea><br>
+            <button type="submit">Exécuter</button>
+        </form>
+        
+         <button id="toggleImage">Afficher l'image</button>
+        <div id="imageContainer" class="left-aligned-image" style="display: none;">
+    <img class="small-image" src="{% static 'schema.jpg' %}" alt="Schema">
+</div>
+
+        </div>
+</div>
+  
+
+    <div class="results">
+        {% if resultats %}
+        <h2>Résultats :</h2>
+        <table border="1">
+            <tr>
+                {% for nom_colonne in resultats.0.keys %}
+                <th>{{ nom_colonne }}</th>
+                {% endfor %}
+            </tr>
+            {% for ligne in resultats %}
+            <tr>
+                {% for valeur in ligne.values %}
+                <td>{{ valeur }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+
+    <div class="git">
+        <p><a href="https://github.com/Amugith/Projet_BDD_M1" target="_blank">GitHub du projet</a></p> 
+    </div>
+
+    <div class="top-left-buttons">
+        <a class="back-previous-button" href="javascript:history.go(-1)">Retour</a>
+        <a class="back-home-button" href="{% url 'home' %}">Accueil</a>
+    </div>
+</body>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var toggleButton = document.getElementById('toggleImage');
+    var imageContainer = document.getElementById('imageContainer');
+    
+    toggleButton.addEventListener('click', function() {
+        if (imageContainer.style.display === 'none') {
+            imageContainer.style.display = 'block';
+            toggleButton.textContent = 'Masquer le schéma';
+        } else {
+            imageContainer.style.display = 'none';
+            toggleButton.textContent = 'Afficher le schéma';
+        }
+    });
+});
+</script>
+
+

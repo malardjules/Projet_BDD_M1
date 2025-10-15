@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats de la recherche</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .result-item {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .result-item:hover {
+            background-color: #f0f0f0;
+        }
+        .result-content {
+            display: none;
+            margin-top: 10px;
+        }
+        .pre-content {
+        color: black; /* Couleur du texte */
+    }
+    </style>
+</head>
+<body>
+    <div class="forms">
+        <h1 class="results-title">Résultats de la recherche</h1>
+        {% for result in results %}
+        <div class="result-item" onclick="toggleContent('{{ result.message_id|slugify }}')">
+            <h2>{{ result.message_id }}</h1>
+            <p><strong>Date:</strong> {{ result.date }} </p>
+            <p><strong>Sujet:</strong> {{ result.subject }}</p>
+            <p><strong>Expéditeur:</strong> {{ result.sender_id }}</p>
+            <p><strong>Receveurs:</strong> {% for recipient in result.mailbox_ids %} {{ recipient }} {% if not forloop.last %}, {% endif %} {% endfor %}</p>
+            <div class="result-content" id="{{ result.message_id|slugify }}" style="display: none; overflow-x: auto;"">
+                <p><strong>Contenu:</strong></p>
+                 <pre style="color: black; word-wrap: normal;">{{ result.content }}</pre>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="git">
+        <p><a href="https://github.com/Amugith/Projet_BDD_M1" target="_blank">GitHub du projet</a></p> 
+    </div>
+    <div class="top-left-buttons">
+        <a class="back-previous-button" href="javascript:history.go(-1)">Retour</a>
+        <a class="back-home-button" href="{% url 'home' %}">Accueil</a>
+    </div>
+    <script>
+        function toggleContent(message_id) {
+            var contentDiv = document.getElementById(message_id);
+            if (contentDiv.style.display === "none") {
+                contentDiv.style.display = "block";
+            } else {
+                contentDiv.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

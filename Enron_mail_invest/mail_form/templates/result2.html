@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    <div class="forms">
+        <h1 class="results-title">Résultats de la recherche</h1> 
+        {% for result in results %}
+        <h3>{{ result.count }}. Nombre de Messages Echangé: {{ result.mail_count }}</h3>
+        <div class="result-item2">
+            <div class="employee-info">
+                <h3>ID Employé: {{ result.employee_id1 }}</h3>
+                <p><strong>Identifiant:</strong> {{ result.employee_id1 }}</p>
+                <p><strong>Firstname:</strong> {{ result.firstname1 }}</p>
+                <p><strong>Lastname:</strong> {{ result.lastname1 }}</p>
+                <p><strong>Catégorie:</strong> {{ result.category1 }}</p>
+            </div>
+            <div class="employee-info">
+                <h3>ID Employé: {{ result.employee_id2 }}</h3>
+                <p><strong>Identifiant:</strong> {{ result.employee_id2 }}</p>
+                <p><strong>Firstname:</strong> {{ result.firstname2 }}</p>
+                <p><strong>Lastname:</strong> {{ result.lastname2 }}</p>
+                <p><strong>Catégorie:</strong> {{ result.category2 }}</p>
+            </div>
+</div>
+
+        {% endfor %}
+    </div>
+    <div class="git">
+         <p><a href="https://github.com/Amugith/Projet_BDD_M1" target="_blank">GitHub du projet</a></p> 
+    </div>
+    </div>
+    <div class="top-left-buttons">
+    <a class="back-previous-button" href="javascript:history.go(-1)">Retour</a>
+    <a class="back-home-button" href="{% url 'home' %}">Accueil</a>
+    </div>
+</body>
+</html>
+
