@@ -1,6 +1,6 @@
 # README - Application Web pour l'Analyse des Données de l'Affaire Enron
 
-Cette application permet aux enquêteurs d'explorer, de visualiser et d'analyser les données issues des e-mails d'Enron en utilisant des requêtes paramétrées.
+Cette application permet  de visualiser et d'analyser les données issues des e-mails d'Enron en utilisant des requêtes paramétrées.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Pour utiliser cette application localement, veuillez suivre les étapes suivante
 
 2. Clonez ce dépôt GitHub sur votre machine :
    ```bash
-   git clone 
+   git clone https://github.com/malardjules/Projet_BDD_M1.git
    ```
 3. Installez les dépendances requises :
    ```bash
